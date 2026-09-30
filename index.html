@@ -4,96 +4,166 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Grade 7 Mathematics Test</title>
+<title>Adaptive Mathematics Placement Test</title>
 
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        background: #f4f7fb;
-        margin: 0;
-        padding: 20px;
-    }
 
-    .container {
-        max-width: 800px;
-        margin: auto;
-        background: white;
-        padding: 30px;
-        border-radius: 15px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    }
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg,#eef4ff,#f8fbff);
+    margin: 0;
+    padding: 20px;
+    color: #222;
+}
 
-    h1 {
-        text-align: center;
-        margin-bottom: 5px;
-    }
+.container {
+    max-width: 850px;
+    margin: auto;
+}
 
-    .subtitle {
-        text-align: center;
-        color: #666;
-        margin-bottom: 25px;
-    }
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.10);
+    margin-top: 20px;
+}
 
-    .student-name {
-        margin-bottom: 25px;
-    }
+h1 {
+    text-align: center;
+    color: #17365d;
+}
 
-    input[type="text"] {
-        width: 100%;
-        padding: 12px;
-        box-sizing: border-box;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        font-size: 16px;
-    }
+h2 {
+    color: #24527a;
+}
 
-    .question {
-        margin-bottom: 25px;
-        padding: 20px;
-        background: #f8f9fc;
-        border-radius: 12px;
-    }
+.subtitle {
+    text-align: center;
+    color: #666;
+}
 
-    .question h3 {
-        margin-top: 0;
-    }
+input[type="text"] {
+    width: 100%;
+    padding: 14px;
+    box-sizing: border-box;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-top: 10px;
+}
 
-    label {
-        display: block;
-        padding: 10px;
-        margin: 7px 0;
-        background: white;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        cursor: pointer;
-    }
+button {
+    background: #24527a;
+    color: white;
+    border: none;
+    padding: 13px 22px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+}
 
-    label:hover {
-        background: #eef3ff;
-    }
+button:hover {
+    opacity: 0.9;
+}
 
-    button {
-        display: block;
-        margin: 25px auto;
-        padding: 13px 30px;
-        font-size: 16px;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        background: #2563eb;
-        color: white;
-    }
+.option {
+    display: block;
+    padding: 14px;
+    margin: 12px 0;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
 
-    button:hover {
-        background: #1d4ed8;
-    }
+.option:hover {
+    border-color: #24527a;
+    background: #f2f7fc;
+}
 
-    #result {
-        text-align: center;
-        font-size: 22px;
-        font-weight: bold;
-        margin-top: 25px;
-    }
+.option input {
+    margin-right: 10px;
+}
+
+.progress {
+    height: 12px;
+    background: #e5e5e5;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.progress-bar {
+    height: 100%;
+    background: #24527a;
+    width: 0%;
+    transition: width 0.3s;
+}
+
+.question-number {
+    font-weight: bold;
+    color: #666;
+}
+
+.topic {
+    display: inline-block;
+    background: #eaf2ff;
+    padding: 6px 10px;
+    border-radius: 15px;
+    color: #24527a;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.result-box {
+    background: #f4f8ff;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 20px;
+}
+
+.score {
+    font-size: 38px;
+    font-weight: bold;
+    text-align: center;
+    color: #24527a;
+}
+
+.level {
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    margin: 15px;
+}
+
+.topic-row {
+    margin: 12px 0;
+}
+
+.topic-bar {
+    height: 18px;
+    background: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.topic-fill {
+    height: 100%;
+    background: #24527a;
+}
+
+.hidden {
+    display: none;
+}
+
+.feedback {
+    text-align: center;
+    font-size: 17px;
+    margin-top: 15px;
+}
+
 </style>
 </head>
 
@@ -101,198 +171,1021 @@
 
 <div class="container">
 
-    <h1>Grade 7 Mathematics Test</h1>
+<div id="startScreen" class="card">
 
-    <div class="subtitle">
-        Number & Algebra Skills
-    </div>
+<h1>🧠 Adaptive Mathematics Placement Test</h1>
 
-    <div class="student-name">
-        <label for="studentName">Student Name</label>
-        <input type="text" id="studentName" placeholder="Enter your name">
-    </div>
+<p class="subtitle">
+Grade 7 / Grade 8 Mathematics
+</p>
 
-    <form id="quizForm">
+<p>
+This test adapts to your answers. If you answer correctly,
+the next question may become more challenging. If you need
+more support, the next question may become easier.
+</p>
 
-        <div class="question">
-            <h3>1. What is the value of −7 + 12?</h3>
+<label><b>Student Name</b></label>
 
-            <label>
-                <input type="radio" name="q1" value="5">
-                A. 5
-            </label>
+<input
+    type="text"
+    id="studentName"
+    placeholder="Enter your name"
+>
 
-            <label>
-                <input type="radio" name="q1" value="-5">
-                B. −5
-            </label>
+<button onclick="startTest()">Start Test</button>
 
-            <label>
-                <input type="radio" name="q1" value="19">
-                C. 19
-            </label>
-
-            <label>
-                <input type="radio" name="q1" value="-19">
-                D. −19
-            </label>
-        </div>
+</div>
 
 
-        <div class="question">
-            <h3>2. Which number is a prime number?</h3>
+<div id="testScreen" class="card hidden">
 
-            <label>
-                <input type="radio" name="q2" value="21">
-                A. 21
-            </label>
+<div class="question-number">
+Question <span id="questionNumber">1</span> of 20
+</div>
 
-            <label>
-                <input type="radio" name="q2" value="29">
-                B. 29
-            </label>
+<div class="progress">
+    <div id="progressBar" class="progress-bar"></div>
+</div>
 
-            <label>
-                <input type="radio" name="q2" value="35">
-                C. 35
-            </label>
+<div id="topicLabel" class="topic"></div>
 
-            <label>
-                <input type="radio" name="q2" value="39">
-                D. 39
-            </label>
-        </div>
+<h2 id="questionText"></h2>
+
+<div id="options"></div>
+
+<button onclick="submitAnswer()">Next</button>
+
+<div id="feedback" class="feedback"></div>
+
+</div>
 
 
-        <div class="question">
-            <h3>3. What is 3 × 4²?</h3>
+<div id="resultScreen" class="card hidden">
 
-            <label>
-                <input type="radio" name="q3" value="24">
-                A. 24
-            </label>
+<h1>📊 Test Result</h1>
 
-            <label>
-                <input type="radio" name="q3" value="48">
-                B. 48
-            </label>
+<p id="studentResult"></p>
 
-            <label>
-                <input type="radio" name="q3" value="36">
-                C. 36
-            </label>
+<div class="score">
+<span id="finalScore"></span>
+</div>
 
-            <label>
-                <input type="radio" name="q3" value="12">
-                D. 12
-            </label>
-        </div>
+<div class="level" id="finalLevel"></div>
 
+<div class="result-box">
 
-        <div class="question">
-            <h3>4. Which fraction is equivalent to 3/4?</h3>
+<h2>Topic Performance</h2>
 
-            <label>
-                <input type="radio" name="q4" value="6/8">
-                A. 6/8
-            </label>
+<div id="topicResults"></div>
 
-            <label>
-                <input type="radio" name="q4" value="4/6">
-                B. 4/6
-            </label>
+</div>
 
-            <label>
-                <input type="radio" name="q4" value="5/8">
-                C. 5/8
-            </label>
+<div class="result-box">
 
-            <label>
-                <input type="radio" name="q4" value="7/8">
-                D. 7/8
-            </label>
-        </div>
+<h2>What this means</h2>
 
+<p id="resultMessage"></p>
 
-        <div class="question">
-            <h3>5. Solve: 2x + 5 = 15</h3>
+</div>
 
-            <label>
-                <input type="radio" name="q5" value="5">
-                A. x = 5
-            </label>
+<button onclick="location.reload()">Take Test Again</button>
 
-            <label>
-                <input type="radio" name="q5" value="10">
-                B. x = 10
-            </label>
-
-            <label>
-                <input type="radio" name="q5" value="2">
-                C. x = 2
-            </label>
-
-            <label>
-                <input type="radio" name="q5" value="15">
-                D. x = 15
-            </label>
-        </div>
-
-        <button type="button" onclick="checkAnswers()">
-            Submit Test
-        </button>
-
-    </form>
-
-    <div id="result"></div>
+</div>
 
 </div>
 
 
 <script>
 
-function checkAnswers() {
+/* ==========================================================
+   QUESTION BANK
+   difficulty:
+   1 = Foundation
+   2 = Developing
+   3 = Secure
+   4 = Strong
+   ========================================================== */
 
-    const studentName =
-        document.getElementById("studentName").value;
+const questions = [
 
-    if (studentName.trim() === "") {
+/* NUMBER & OPERATIONS */
+
+{
+id:1,
+topic:"Number & Operations",
+difficulty:1,
+question:"What is 7 + 5?",
+options:["10","11","12","13"],
+answer:2
+},
+
+{
+id:2,
+topic:"Number & Operations",
+difficulty:2,
+question:"What is -8 + 13?",
+options:["-21","-5","5","21"],
+answer:2
+},
+
+{
+id:3,
+topic:"Number & Operations",
+difficulty:1,
+question:"Which number is prime?",
+options:["21","27","29","33"],
+answer:2
+},
+
+{
+id:4,
+topic:"Number & Operations",
+difficulty:2,
+question:"What is 3/4 + 1/8?",
+options:["4/12","5/8","7/8","1"],
+answer:2
+},
+
+{
+id:5,
+topic:"Number & Operations",
+difficulty:1,
+question:"What is the LCM of 4 and 6?",
+options:["8","10","12","24"],
+answer:2
+},
+
+{
+id:6,
+topic:"Number & Operations",
+difficulty:2,
+question:"Calculate 5/6 ÷ 2/3.",
+options:["5/9","3/5","5/4","4/5"],
+answer:2
+},
+
+{
+id:7,
+topic:"Number & Operations",
+difficulty:1,
+question:"Which is equal to 0.75?",
+options:["1/2","2/3","3/4","4/5"],
+answer:2
+},
+
+{
+id:8,
+topic:"Number & Operations",
+difficulty:2,
+question:"What is 2.5 × 0.4?",
+options:["0.1","1","10","100"],
+answer:1
+},
+
+/* ALGEBRA & PATTERNS */
+
+{
+id:9,
+topic:"Algebra & Patterns",
+difficulty:2,
+question:"Solve: x + 7 = 15",
+options:["6","7","8","9"],
+answer:2
+},
+
+{
+id:10,
+topic:"Algebra & Patterns",
+difficulty:2,
+question:"Solve: 3x = 21",
+options:["6","7","8","9"],
+answer:1
+},
+
+{
+id:11,
+topic:"Algebra & Patterns",
+difficulty:3,
+question:"Factorise: 6x + 12",
+options:[
+"6(x + 2)",
+"3(2x + 12)",
+"6(x + 12)",
+"12(x + 6)"
+],
+answer:0
+},
+
+{
+id:12,
+topic:"Algebra & Patterns",
+difficulty:2,
+question:"If x = 4, what is 2x + 3?",
+options:["7","9","11","12"],
+answer:2
+},
+
+{
+id:13,
+topic:"Algebra & Patterns",
+difficulty:2,
+question:"What is the next number? 3, 6, 12, 24, ___",
+options:["30","36","48","54"],
+answer:2
+},
+
+{
+id:14,
+topic:"Algebra & Patterns",
+difficulty:2,
+question:"Simplify: 4x + 3x",
+options:["7","7x","12x","x⁷"],
+answer:1
+},
+
+{
+id:15,
+topic:"Algebra & Patterns",
+difficulty:3,
+question:"If 2x + 5 = 17, what is x?",
+options:["5","6","7","8"],
+answer:1
+},
+
+{
+id:16,
+topic:"Algebra & Patterns",
+difficulty:3,
+question:"Which expression represents '5 more than three times x'?",
+options:[
+"5x + 3",
+"3x + 5",
+"3(x + 5)",
+"5(x + 3)"
+],
+answer:1
+},
+
+/* RATIO PROPORTION PERCENTAGE */
+
+{
+id:17,
+topic:"Ratio & Proportion",
+difficulty:2,
+question:"Simplify the ratio 12 : 18.",
+options:["2 : 3","3 : 4","4 : 5","6 : 9"],
+answer:0
+},
+
+{
+id:18,
+topic:"Ratio & Proportion",
+difficulty:2,
+question:"If 3 notebooks cost ₹90, how much does 1 notebook cost?",
+options:["₹20","₹25","₹30","₹35"],
+answer:2
+},
+
+{
+id:19,
+topic:"Ratio & Proportion",
+difficulty:2,
+question:"What is 25% of 80?",
+options:["10","20","25","40"],
+answer:1
+},
+
+{
+id:20,
+topic:"Ratio & Proportion",
+difficulty:2,
+question:"A shirt costs ₹800. It is reduced by 10%. What is the new price?",
+options:["₹700","₹720","₹780","₹790"],
+answer:1
+},
+
+{
+id:21,
+topic:"Ratio & Proportion",
+difficulty:3,
+question:"If 5 pens cost ₹75, how much will 8 pens cost?",
+options:["₹100","₹110","₹120","₹125"],
+answer:2
+},
+
+/* GEOMETRY */
+
+{
+id:22,
+topic:"Geometry & Measure",
+difficulty:1,
+question:"Angles on a straight line add up to:",
+options:["90°","180°","270°","360°"],
+answer:1
+},
+
+{
+id:23,
+topic:"Geometry & Measure",
+difficulty:1,
+question:"The angles in a triangle add up to:",
+options:["90°","180°","270°","360°"],
+answer:1
+},
+
+{
+id:24,
+topic:"Geometry & Measure",
+difficulty:2,
+question:"A rectangle has length 8 cm and width 5 cm. What is its area?",
+options:["13 cm²","26 cm²","40 cm²","80 cm²"],
+answer:2
+},
+
+{
+id:25,
+topic:"Geometry & Measure",
+difficulty:1,
+question:"A square has side length 6 cm. What is its perimeter?",
+options:["12 cm","18 cm","24 cm","36 cm"],
+answer:2
+},
+
+{
+id:26,
+topic:"Geometry & Measure",
+difficulty:2,
+question:"A triangle has angles 50° and 60°. What is the third angle?",
+options:["60°","70°","80°","90°"],
+answer:1
+},
+
+{
+id:27,
+topic:"Geometry & Measure",
+difficulty:1,
+question:"A full turn is equal to:",
+options:["90°","180°","270°","360°"],
+answer:3
+},
+
+{
+id:28,
+topic:"Geometry & Measure",
+difficulty:2,
+question:"A rectangle has perimeter 30 cm and length 10 cm. What is its width?",
+options:["5 cm","10 cm","15 cm","20 cm"],
+answer:0
+},
+
+/* DATA & PROBABILITY */
+
+{
+id:29,
+topic:"Data & Probability",
+difficulty:1,
+question:"Find the mean of 4, 6 and 8.",
+options:["5","6","7","8"],
+answer:1
+},
+
+{
+id:30,
+topic:"Data & Probability",
+difficulty:1,
+question:"Find the median of 3, 5, 7, 9, 11.",
+options:["3","5","7","9"],
+answer:2
+},
+
+{
+id:31,
+topic:"Data & Probability",
+difficulty:1,
+question:"A fair coin is tossed once. What is the probability of getting heads?",
+options:["0","1/4","1/2","1"],
+answer:2
+},
+
+{
+id:32,
+topic:"Data & Probability",
+difficulty:2,
+question:"The numbers are 2, 4, 4, 5, 7. What is the mode?",
+options:["2","4","5","7"],
+answer:1
+},
+
+/* MATHEMATICAL REASONING */
+
+{
+id:33,
+topic:"Mathematical Reasoning",
+difficulty:2,
+question:"A car travels 60 km in 2 hours. What is its average speed?",
+options:["20 km/h","30 km/h","40 km/h","120 km/h"],
+answer:1
+},
+
+{
+id:34,
+topic:"Mathematical Reasoning",
+difficulty:2,
+question:"A number is increased from 40 to 50. What is the increase?",
+options:["5","10","15","20"],
+answer:1
+},
+
+{
+id:35,
+topic:"Mathematical Reasoning",
+difficulty:3,
+question:"A train travels 180 km in 3 hours. What is its average speed?",
+options:["30 km/h","50 km/h","60 km/h","90 km/h"],
+answer:2
+},
+
+{
+id:36,
+topic:"Mathematical Reasoning",
+difficulty:1,
+question:"Which number is greatest?",
+options:["0.45","0.5","0.405","0.49"],
+answer:1
+},
+
+{
+id:37,
+topic:"Mathematical Reasoning",
+difficulty:2,
+question:"A box contains 24 pencils. 1/3 are red. How many are red?",
+options:["6","8","10","12"],
+answer:1
+},
+
+{
+id:38,
+topic:"Mathematical Reasoning",
+difficulty:2,
+question:"A student scores 36 out of 40. What percentage is this?",
+options:["80%","85%","90%","95%"],
+answer:2
+},
+
+{
+id:39,
+topic:"Mathematical Reasoning",
+difficulty:3,
+question:"A number is multiplied by 4 and then 3 is added. The result is 23. What is the number?",
+options:["4","5","6","7"],
+answer:1
+},
+
+{
+id:40,
+topic:"Mathematical Reasoning",
+difficulty:3,
+question:"A rectangle has area 48 cm² and length 8 cm. What is its width?",
+options:["4 cm","5 cm","6 cm","8 cm"],
+answer:2
+}
+
+];
+
+
+/* ==========================================================
+   TEST SETTINGS
+   ========================================================== */
+
+const MAX_QUESTIONS = 20;
+
+let studentName = "";
+
+let currentQuestion = 0;
+
+let currentDifficulty = 2;
+
+let score = 0;
+
+let askedQuestions = [];
+
+let currentQuestionObject = null;
+
+let topicScores = {};
+
+let topicAttempts = {};
+
+let topicOrder = [
+    "Number & Operations",
+    "Algebra & Patterns",
+    "Ratio & Proportion",
+    "Geometry & Measure",
+    "Data & Probability",
+    "Mathematical Reasoning"
+];
+
+
+/* ==========================================================
+   START TEST
+   ========================================================== */
+
+function startTest() {
+
+    studentName =
+        document.getElementById("studentName").value.trim();
+
+    if (studentName === "") {
+
         alert("Please enter your name.");
+
         return;
     }
 
-    const answers = {
-        q1: "5",
-        q2: "29",
-        q3: "48",
-        q4: "6/8",
-        q5: "5"
-    };
+    document.getElementById("startScreen")
+        .classList.add("hidden");
 
-    let score = 0;
+    document.getElementById("testScreen")
+        .classList.remove("hidden");
 
-    for (let question in answers) {
+    loadNextQuestion();
+}
 
-        const selected =
-            document.querySelector(
-                'input[name="' + question + '"]:checked'
-            );
 
-        if (selected && selected.value === answers[question]) {
-            score++;
-        }
+/* ==========================================================
+   CHOOSE NEXT QUESTION
+   ========================================================== */
+
+function chooseQuestion() {
+
+    let available = questions.filter(q =>
+        !askedQuestions.includes(q.id)
+    );
+
+    if (available.length === 0) {
+        return null;
     }
 
-    const total = Object.keys(answers).length;
 
-    const percentage = (score / total) * 100;
+    /*
+       Choose a topic that has been used the least.
+       This prevents the adaptive system from asking
+       only algebra or only number questions.
+    */
 
-    document.getElementById("result").innerHTML =
-        "Well done, " + studentName +
-        "!<br><br>" +
-        "Your Score: " + score + " / " + total +
-        "<br>" +
-        "Percentage: " + percentage + "%";
+    let minimumAttempts = Infinity;
+
+    topicOrder.forEach(topic => {
+
+        let count = topicAttempts[topic] || 0;
+
+        if (count < minimumAttempts) {
+            minimumAttempts = count;
+        }
+
+    });
+
+
+    let preferredTopics = topicOrder.filter(topic =>
+        (topicAttempts[topic] || 0) === minimumAttempts
+    );
+
+
+    /*
+       Pick one of the least-used topics.
+    */
+
+    let selectedTopic =
+        preferredTopics[
+            Math.floor(Math.random() * preferredTopics.length)
+        ];
+
+
+    let topicQuestions = available.filter(q =>
+        q.topic === selectedTopic
+    );
+
+
+    /*
+       Find a question close to the current difficulty.
+    */
+
+    topicQuestions.sort((a,b) => {
+
+        return Math.abs(a.difficulty - currentDifficulty)
+             - Math.abs(b.difficulty - currentDifficulty);
+
+    });
+
+
+    return topicQuestions[0];
+}
+
+
+/* ==========================================================
+   LOAD QUESTION
+   ========================================================== */
+
+function loadNextQuestion() {
+
+    if (currentQuestion >= MAX_QUESTIONS) {
+
+        finishTest();
+
+        return;
+    }
+
+
+    currentQuestionObject = chooseQuestion();
+
+
+    if (!currentQuestionObject) {
+
+        finishTest();
+
+        return;
+    }
+
+
+    askedQuestions.push(currentQuestionObject.id);
+
+
+    let topic = currentQuestionObject.topic;
+
+    topicAttempts[topic] =
+        (topicAttempts[topic] || 0) + 1;
+
+
+    document.getElementById("questionNumber")
+        .textContent = currentQuestion + 1;
+
+
+    document.getElementById("progressBar")
+        .style.width =
+        ((currentQuestion) / MAX_QUESTIONS * 100) + "%";
+
+
+    document.getElementById("topicLabel")
+        .textContent =
+        currentQuestionObject.topic;
+
+
+    document.getElementById("questionText")
+        .textContent =
+        currentQuestionObject.question;
+
+
+    let optionsHTML = "";
+
+
+    currentQuestionObject.options.forEach(
+        (option,index) => {
+
+        optionsHTML += `
+
+        <label class="option">
+
+            <input
+                type="radio"
+                name="answer"
+                value="${index}"
+            >
+
+            ${option}
+
+        </label>
+
+        `;
+
+    });
+
+
+    document.getElementById("options")
+        .innerHTML = optionsHTML;
+
+
+    document.getElementById("feedback")
+        .textContent = "";
+
+
+    currentQuestion++;
+}
+
+
+/* ==========================================================
+   SUBMIT ANSWER
+   ========================================================== */
+
+function submitAnswer() {
+
+    let selected =
+        document.querySelector(
+            'input[name="answer"]:checked'
+        );
+
+
+    if (!selected) {
+
+        alert("Please select an answer.");
+
+        return;
+    }
+
+
+    let answer =
+        Number(selected.value);
+
+
+    let correct =
+        answer === currentQuestionObject.answer;
+
+
+    let topic =
+        currentQuestionObject.topic;
+
+
+    if (!topicScores[topic]) {
+
+        topicScores[topic] = 0;
+
+    }
+
+
+    if (correct) {
+
+        score++;
+
+        topicScores[topic]++;
+
+        /*
+           CORRECT:
+           Move one difficulty level higher.
+        */
+
+        currentDifficulty =
+            Math.min(4, currentDifficulty + 1);
+
+
+    } else {
+
+        /*
+           INCORRECT:
+           Move one difficulty level lower.
+        */
+
+        currentDifficulty =
+            Math.max(1, currentDifficulty - 1);
+
+    }
+
+
+    loadNextQuestion();
+}
+
+
+/* ==========================================================
+   FINISH TEST
+   ========================================================== */
+
+function finishTest() {
+
+    document.getElementById("testScreen")
+        .classList.add("hidden");
+
+    document.getElementById("resultScreen")
+        .classList.remove("hidden");
+
+
+    let percentage =
+        Math.round(
+            (score / MAX_QUESTIONS) * 100
+        );
+
+
+    let level = getLevel(score);
+
+
+    document.getElementById("studentResult")
+        .innerHTML =
+        "<b>Student:</b> " + studentName;
+
+
+    document.getElementById("finalScore")
+        .textContent =
+        score + " / " + MAX_QUESTIONS;
+
+
+    document.getElementById("finalLevel")
+        .textContent =
+        "Placement Level: " + level;
+
+
+    document.getElementById("resultMessage")
+        .textContent =
+        getMessage(level);
+
+
+    showTopicResults();
+
+
+    /*
+       OPTIONAL:
+       Send result to Google Sheets.
+       Add your Google Apps Script URL below.
+    */
+
+    sendResultToGoogleSheets(
+        studentName,
+        score,
+        MAX_QUESTIONS,
+        percentage,
+        level
+    );
+}
+
+
+/* ==========================================================
+   LEVEL
+   ========================================================== */
+
+function getLevel(score) {
+
+    if (score <= 7)
+        return "Foundation";
+
+    if (score <= 11)
+        return "Developing";
+
+    if (score <= 15)
+        return "Secure";
+
+    if (score <= 18)
+        return "Strong";
+
+    return "Extension";
+}
+
+
+/* ==========================================================
+   RESULT MESSAGE
+   ========================================================== */
+
+function getMessage(level) {
+
+    if (level === "Foundation") {
+
+        return "The student would benefit from strengthening core mathematical skills before moving into more advanced Grade 7/8 work.";
+
+    }
+
+    if (level === "Developing") {
+
+        return "The student demonstrates developing understanding and would benefit from targeted support and further practice.";
+
+    }
+
+    if (level === "Secure") {
+
+        return "The student demonstrates a secure understanding of many Grade 7/8 mathematical skills.";
+
+    }
+
+    if (level === "Strong") {
+
+        return "The student demonstrates strong mathematical understanding and is ready for more challenging Grade 8 work.";
+
+    }
+
+    return "The student demonstrates strong performance across the assessment and can be considered for extension-level mathematical tasks.";
+
+}
+
+
+/* ==========================================================
+   TOPIC RESULTS
+   ========================================================== */
+
+function showTopicResults() {
+
+    let container =
+        document.getElementById("topicResults");
+
+    container.innerHTML = "";
+
+
+    topicOrder.forEach(topic => {
+
+        let attempts =
+            topicAttempts[topic] || 0;
+
+        let correct =
+            topicScores[topic] || 0;
+
+
+        if (attempts === 0) {
+            return;
+        }
+
+
+        let percentage =
+            Math.round(
+                (correct / attempts) * 100
+            );
+
+
+        container.innerHTML += `
+
+        <div class="topic-row">
+
+            <b>${topic}</b>
+
+            <span style="float:right">
+                ${correct}/${attempts}
+                (${percentage}%)
+            </span>
+
+            <div class="topic-bar">
+
+                <div
+                    class="topic-fill"
+                    style="width:${percentage}%">
+                </div>
+
+            </div>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+
+/* ==========================================================
+   GOOGLE SHEETS
+   ========================================================== */
+
+/*
+   PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL HERE.
+
+   Example:
+
+   const GOOGLE_SCRIPT_URL =
+   "https://script.google.com/macros/s/XXXXXXXX/exec";
+
+*/
+
+const GOOGLE_SCRIPT_URL = "";
+
+
+function sendResultToGoogleSheets(
+    name,
+    score,
+    total,
+    percentage,
+    level
+) {
+
+    if (GOOGLE_SCRIPT_URL === "") {
+
+        console.log(
+            "Google Sheets URL has not been added."
+        );
+
+        return;
+    }
+
+
+    fetch(GOOGLE_SCRIPT_URL, {
+
+        method: "POST",
+
+        mode: "no-cors",
+
+        headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+        },
+
+        body: JSON.stringify({
+
+            name: name,
+
+            score: score,
+
+            total: total,
+
+            percentage: percentage,
+
+            level: level,
+
+            date:
+                new Date().toLocaleString()
+
+        })
+
+    });
+
 }
 
 </script>
