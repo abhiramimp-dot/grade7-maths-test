@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Grade 7 Mathematics Test</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f4f7fb;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: auto;
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    .subtitle {
+        text-align: center;
+        color: #666;
+        margin-bottom: 25px;
+    }
+
+    .student-name {
+        margin-bottom: 25px;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        padding: 12px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 16px;
+    }
+
+    .question {
+        margin-bottom: 25px;
+        padding: 20px;
+        background: #f8f9fc;
+        border-radius: 12px;
+    }
+
+    .question h3 {
+        margin-top: 0;
+    }
+
+    label {
+        display: block;
+        padding: 10px;
+        margin: 7px 0;
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    label:hover {
+        background: #eef3ff;
+    }
+
+    button {
+        display: block;
+        margin: 25px auto;
+        padding: 13px 30px;
+        font-size: 16px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        background: #2563eb;
+        color: white;
+    }
+
+    button:hover {
+        background: #1d4ed8;
+    }
+
+    #result {
+        text-align: center;
+        font-size: 22px;
+        font-weight: bold;
+        margin-top: 25px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Grade 7 Mathematics Test</h1>
+
+    <div class="subtitle">
+        Number & Algebra Skills
+    </div>
+
+    <div class="student-name">
+        <label for="studentName">Student Name</label>
+        <input type="text" id="studentName" placeholder="Enter your name">
+    </div>
+
+    <form id="quizForm">
+
+        <div class="question">
+            <h3>1. What is the value of −7 + 12?</h3>
+
+            <label>
+                <input type="radio" name="q1" value="5">
+                A. 5
+            </label>
+
+            <label>
+                <input type="radio" name="q1" value="-5">
+                B. −5
+            </label>
+
+            <label>
+                <input type="radio" name="q1" value="19">
+                C. 19
+            </label>
+
+            <label>
+                <input type="radio" name="q1" value="-19">
+                D. −19
+            </label>
+        </div>
+
+
+        <div class="question">
+            <h3>2. Which number is a prime number?</h3>
+
+            <label>
+                <input type="radio" name="q2" value="21">
+                A. 21
+            </label>
+
+            <label>
+                <input type="radio" name="q2" value="29">
+                B. 29
+            </label>
+
+            <label>
+                <input type="radio" name="q2" value="35">
+                C. 35
+            </label>
+
+            <label>
+                <input type="radio" name="q2" value="39">
+                D. 39
+            </label>
+        </div>
+
+
+        <div class="question">
+            <h3>3. What is 3 × 4²?</h3>
+
+            <label>
+                <input type="radio" name="q3" value="24">
+                A. 24
+            </label>
+
+            <label>
+                <input type="radio" name="q3" value="48">
+                B. 48
+            </label>
+
+            <label>
+                <input type="radio" name="q3" value="36">
+                C. 36
+            </label>
+
+            <label>
+                <input type="radio" name="q3" value="12">
+                D. 12
+            </label>
+        </div>
+
+
+        <div class="question">
+            <h3>4. Which fraction is equivalent to 3/4?</h3>
+
+            <label>
+                <input type="radio" name="q4" value="6/8">
+                A. 6/8
+            </label>
+
+            <label>
+                <input type="radio" name="q4" value="4/6">
+                B. 4/6
+            </label>
+
+            <label>
+                <input type="radio" name="q4" value="5/8">
+                C. 5/8
+            </label>
+
+            <label>
+                <input type="radio" name="q4" value="7/8">
+                D. 7/8
+            </label>
+        </div>
+
+
+        <div class="question">
+            <h3>5. Solve: 2x + 5 = 15</h3>
+
+            <label>
+                <input type="radio" name="q5" value="5">
+                A. x = 5
+            </label>
+
+            <label>
+                <input type="radio" name="q5" value="10">
+                B. x = 10
+            </label>
+
+            <label>
+                <input type="radio" name="q5" value="2">
+                C. x = 2
+            </label>
+
+            <label>
+                <input type="radio" name="q5" value="15">
+                D. x = 15
+            </label>
+        </div>
+
+        <button type="button" onclick="checkAnswers()">
+            Submit Test
+        </button>
+
+    </form>
+
+    <div id="result"></div>
+
+</div>
+
+
+<script>
+
+function checkAnswers() {
+
+    const studentName =
+        document.getElementById("studentName").value;
+
+    if (studentName.trim() === "") {
+        alert("Please enter your name.");
+        return;
+    }
+
+    const answers = {
+        q1: "5",
+        q2: "29",
+        q3: "48",
+        q4: "6/8",
+        q5: "5"
+    };
+
+    let score = 0;
+
+    for (let question in answers) {
+
+        const selected =
+            document.querySelector(
+                'input[name="' + question + '"]:checked'
+            );
+
+        if (selected && selected.value === answers[question]) {
+            score++;
+        }
+    }
+
+    const total = Object.keys(answers).length;
+
+    const percentage = (score / total) * 100;
+
+    document.getElementById("result").innerHTML =
+        "Well done, " + studentName +
+        "!<br><br>" +
+        "Your Score: " + score + " / " + total +
+        "<br>" +
+        "Percentage: " + percentage + "%";
+}
+
+</script>
+
+</body>
+</html>
