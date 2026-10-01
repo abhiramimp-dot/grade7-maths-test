@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade 7 Integers Interactive Quiz</title>
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-hover: #4338ca;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+            --success: #16a34a;
+            --error: #dc2626;
+            --border: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .level-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .level-1 { background-color: #dcfce7; color: #15803d; }
+        .level-2 { background-color: #fef3c7; color: #b45309; }
+        .level-3 { background-color: #fee2e2; color: #b91c1c; }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .question-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        input[type="number"] {
+            padding: 10px 14px;
+            border: 2px solid var(--border);
+            border-radius: 6px;
+            font-size: 1rem;
+            width: 140px;
+            outline: none;
+        }
+
+        input[type="number"]:focus {
+            border-color: var(--primary);
+        }
+
+        button {
+            padding: 10px 18px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background-color: var(--primary-hover);
+        }
+
+        button.btn-secondary {
+            background-color: #64748b;
+        }
+
+        button.btn-secondary:hover {
+            background-color: #475569;
+        }
+
+        .feedback {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 6px;
+            display: none;
+            font-weight: 600;
+        }
+
+        .feedback.correct {
+            display: block;
+            background-color: #dcfce7;
+            color: var(--success);
+            border: 1px solid #86efac;
+        }
+
+        .feedback.incorrect {
+            display: block;
+            background-color: #fee2e2;
+            color: var(--error);
+            border: 1px solid #fca5a5;
+        }
+
+        .explanation {
+            margin-top: 10px;
+            padding: 12px;
+            background-color: #f1f5f9;
+            border-left: 4px solid var(--primary);
+            font-size: 0.95rem;
+            display: none;
+        }
+
+        .hint {
+            margin-top: 10px;
+            font-style: italic;
+            color: #64748b;
+            display: none;
+        }
+
+        #score-board {
+            position: sticky;
+            top: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 20px;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Integers Practice Challenge</h1>
+        <p>Grade 7 | Addition & Subtraction Word Problems</p>
+    </header>
+
+    <div id="score-board">Score: <span id="score">0</span> / 10</div>
+
+    <div id="quiz-container"></div>
+</div>
+
+<script>
+const questions = [
+    // Level 1
+    {
+        id: 1,
+        level: 1,
+        text: "1. At midnight, the temperature in Denver was -6°C. By morning, the temperature had dropped by another 5°C. What was the morning temperature in °C?",
+        answer: -11,
+        hint: "Dropping means subtracting: -6 - 5",
+        explanation: "-6°C - 5°C = -11°C"
+    },
+    {
+        id: 2,
+        level: 1,
+        text: "2. Priya's bank account shows a balance of -$18 due to a fee. She deposits $50 into her account. What is her balance after the deposit?",
+        answer: 32,
+        hint: "Depositing means adding: -18 + 50",
+        explanation: "-$18 + $50 = $32"
+    },
+    {
+        id: 3,
+        level: 1,
+        text: "3. A diver is 35 meters below sea level (-35 m). A drone flies directly overhead at 80 meters above sea level (+80 m). What is the total vertical distance between them in meters?",
+        answer: 115,
+        hint: "Find the difference between top and bottom: 80 - (-35)",
+        explanation: "80 - (-35) = 80 + 35 = 115 meters"
+    },
+
+    // Level 2
+    {
+        id: 4,
+        level: 2,
+        text: "4. Marcus started with $120. He withdrew $45, spent $30 on dinner, deposited $85, and paid a fee of $15. What is his final account balance?",
+        answer: 115,
+        hint: "Subtract withdrawals/expenses/fees and add deposits: 120 - 45 - 30 + 85 - 15",
+        explanation: "120 - 45 - 30 + 85 - 15 = $115"
+    },
+    {
+        id: 5,
+        level: 2,
+        text: "5. In a math contest, students gain 5 points for correct answers, lose 3 for incorrect ones, and lose 1 for skipping. Anika got 6 right, 4 wrong, and skipped 3. What was her score?",
+        answer: 15,
+        hint: "Calculate: 6(5) + 4(-3) + 3(-1)",
+        explanation: "30 - 12 - 3 = 15 points"
+    },
+    {
+        id: 6,
+        level: 2,
+        text: "6. A football team starts on their own 30-yard line. On four plays, they gain 12, lose 8, lose 5, and gain 15 yards. What yard line are they on now?",
+        answer: 44,
+        hint: "Add gains and subtract losses from 30: 30 + 12 - 8 - 5 + 15",
+        explanation: "30 + 12 - 8 - 5 + 15 = 44-yard line"
+    },
+    {
+        id: 7,
+        level: 2,
+        text: "7. At 6:00 AM, the temperature was -10°F. Over the next hours, it rose 18°F, fell 7°F, and rose 4°F. What was the final temperature in °F?",
+        answer: 5,
+        hint: "-10 + 18 - 7 + 4",
+        explanation: "-10 + 18 - 7 + 4 = 5°F"
+    },
+
+    // Level 3
+    {
+        id: 8,
+        level: 3,
+        text: "8. At dawn, the temperature on a peak was -22°C. By afternoon, it reached 8°C. What was the total change in temperature in °C?",
+        answer: 30,
+        hint: "Subtract starting temp from ending temp: 8 - (-22)",
+        explanation: "8 - (-22) = 8 + 22 = 30°C increase"
+    },
+    {
+        id: 9,
+        level: 3,
+        text: "9. Diver A is at -28 m, rises 10 m, then drops 15 m. Diver B is at -12 m and drops 22 m. What depth is the deeper diver at? (Enter as a negative integer, e.g., -34)",
+        answer: -34,
+        hint: "Diver A: -28 + 10 - 15 = -33m. Diver B: -12 - 22 = -34m.",
+        explanation: "Diver B is deeper at -34 meters."
+    },
+    {
+        id: 10,
+        level: 3,
+        text: "10. An elevator starts on floor 2. It drops 5 floors, rises 11, drops 9, and rises 4. What floor is it on now?",
+        answer: 3,
+        hint: "2 - 5 + 11 - 9 + 4",
+        explanation: "2 - 5 + 11 - 9 + 4 = 3rd floor"
+    }
+];
+
+let solvedQuestions = new Set();
+
+function renderQuiz() {
+    const container = document.getElementById('quiz-container');
+    container.innerHTML = '';
+
+    questions.forEach((q, index) => {
+        const levelClass = `level-${q.level}`;
+        const levelText = `Level ${q.level}`;
+
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+            <span class="level-badge ${levelClass}">${levelText}</span>
+            <div class="question-title">${q.text}</div>
+            
+            <div class="input-group">
+                <input type="number" id="input-${q.id}" placeholder="Your answer">
+                <button onclick="checkAnswer(${q.id})">Submit</button>
+                <button class="btn-secondary" onclick="toggleHint(${q.id})">Hint</button>
+            </div>
+
+            <div id="hint-${q.id}" class="hint">💡 <strong>Hint:</strong> ${q.hint}</div>
+            <div id="feedback-${q.id}" class="feedback"></div>
+            <div id="explanation-${q.id}" class="explanation"><strong>Explanation:</strong> ${q.explanation}</div>
+        `;
+        container.appendChild(card);
+    });
+}
+
+function checkAnswer(id) {
+    const q = questions.find(item => item.id === id);
+    const userVal = parseInt(document.getElementById(`input-${id}`).value);
+    const feedbackEl = document.getElementById(`feedback-${id}`);
+    const expEl = document.getElementById(`explanation-${id}`);
+
+    if (isNaN(userVal)) {
+        feedbackEl.className = 'feedback incorrect';
+        feedbackEl.textContent = 'Please enter a number!';
+        return;
+    }
+
+    if (userVal === q.answer) {
+        feedbackEl.className = 'feedback correct';
+        feedbackEl.textContent = '✓ Correct! Great job.';
+        expEl.style.display = 'block';
+
+        if (!solvedQuestions.has(id)) {
+            solvedQuestions.add(id);
+            updateScore();
+        }
+    } else {
+        feedbackEl.className = 'feedback incorrect';
+        feedbackEl.textContent = '✗ Incorrect. Try again or check the hint!';
+    }
+}
+
+function toggleHint(id) {
+    const hintEl = document.getElementById(`hint-${id}`);
+    hintEl.style.display = hintEl.style.display === 'block' ? 'none' : 'block';
+}
+
+function updateScore() {
+    document.getElementById('score').textContent = solvedQuestions.size;
+}
+
+// Initialize quiz
+renderQuiz();
+</script>
+
+</body>
+</html>
