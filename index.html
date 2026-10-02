@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MAGE HYBRID SCHOOL - Math Assessment</title>
+    <title>MAGE HYBRID LEARNING - Math Assessment</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -46,15 +46,9 @@
     <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm no-print">
         <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
             <div class="flex items-center space-x-3">
-                <!-- SVG MAGE Logo -->
-                <div class="flex items-center space-x-2">
-                    <svg class="h-10 w-auto" viewBox="0 0 450 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 15C0 15 45 40 100 0C100 0 55 90 0 110V15Z" fill="#005596"/>
-                        <path d="M0 50C0 50 45 75 100 35C100 35 55 125 0 140V50Z" fill="#005596" opacity="0.85"/>
-                        <path d="M0 85C0 85 45 110 100 70C100 70 55 160 0 170V85Z" fill="#5CB835"/>
-                        <text x="115" y="80" fill="#005596" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="75" letter-spacing="1">MAGE</text>
-                        <text x="118" y="122" fill="#5CB835" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="34" letter-spacing="3.5">HYBRID SCHOOL</text>
-                    </svg>
+                <!-- Uploaded Logo Image -->
+                <div class="flex items-center">
+                    <img src="logo.png" alt="MAGE HYBRID LEARNING" class="h-12 sm:h-14 w-auto object-contain">
                 </div>
             </div>
             <div id="header-student-badge" class="hidden items-center bg-slate-100 rounded-full px-4 py-1.5 border border-slate-200">
@@ -84,7 +78,7 @@
                 <div class="grid grid-cols-2 gap-4 my-6 py-4 border-y border-slate-100 text-left">
                     <div class="flex items-center space-x-3 bg-slate-50 p-3.5 rounded-xl border border-slate-100">
                         <div class="text-mageBlue p-2 bg-white rounded-lg shadow-sm">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M822 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                         </div>
                         <div>
                             <div class="text-xs font-medium text-slate-500">Assessment Length</div>
@@ -187,7 +181,7 @@
                     <div>
                         <div class="text-xs font-bold uppercase tracking-wider text-slate-400">Official Diagnostic Report</div>
                         <h2 id="report-student-name" class="text-2xl font-extrabold text-slate-900">Student Name</h2>
-                        <p class="text-sm text-slate-500">MAGE Hybrid School Grade 9 Promotion Readiness Assessment</p>
+                        <p class="text-sm text-slate-500">MAGE Hybrid Learning Grade 9 Promotion Readiness Assessment</p>
                     </div>
                     <button onclick="window.print()" class="no-print px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-bold rounded-xl border border-slate-300 transition flex items-center space-x-1.5">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
@@ -237,7 +231,7 @@
     <!-- Footer -->
     <footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-500 no-print">
         <div class="max-w-6xl mx-auto px-4">
-            &copy; MAGE HYBRID SCHOOL. All Rights Reserved. Grade 7–8 Adaptive Mathematics Promotion Module.
+            &copy; MAGE HYBRID LEARNING. All Rights Reserved. Grade 7–8 Adaptive Mathematics Promotion Module.
         </div>
     </footer>
 
@@ -339,10 +333,8 @@
             document.getElementById('header-student-badge').classList.remove('hidden');
             document.getElementById('header-student-badge').classList.add('flex');
 
-            // Build Initial 26-question adaptive sequence pool
             buildQuestionSequence();
 
-            // Transition UI
             document.getElementById('view-landing').classList.add('hidden');
             document.getElementById('view-quiz').classList.remove('hidden');
 
@@ -350,30 +342,22 @@
             renderQuestion();
         }
 
-        // Build Question Sequence (Phase 1 Baseline Easy + Phase 2 Adaptive Slots)
+        // Build Question Sequence
         function buildQuestionSequence() {
-            let pool = [];
-            
-            // Phase 1: 13 Easy baseline questions covering each strand
             let easyPool = [...QUESTION_BANK.easy].sort(() => 0.5 - Math.random());
-            let phase1 = easyPool.slice(0, 13);
-            
-            state.questions = phase1;
+            state.questions = easyPool.slice(0, 13);
         }
 
         // Render Current Question
         function renderQuestion() {
             const currentQ = state.questions[state.currentQuestionIndex];
             
-            // Question Counter & Progress Bar
             document.getElementById('quiz-question-counter').textContent = `Question ${state.currentQuestionIndex + 1} of 26`;
             const progressPercent = ((state.currentQuestionIndex + 1) / 26) * 100;
             document.getElementById('quiz-progress-bar').style.width = `${progressPercent}%`;
 
-            // Question Text
             document.getElementById('quiz-question-text').textContent = currentQ.text;
 
-            // Render Render SVG graphics if question requires visual
             const svgContainer = document.getElementById('quiz-svg-container');
             if (currentQ.strand === 'Coordinate Geometry') {
                 svgContainer.classList.remove('hidden');
@@ -386,7 +370,6 @@
                 svgContainer.innerHTML = '';
             }
 
-            // Options List
             const optionsContainer = document.getElementById('quiz-options-container');
             optionsContainer.innerHTML = '';
             state.selectedAnswerIndex = null;
@@ -405,7 +388,6 @@
             });
         }
 
-        // Select Option Handler
         function selectOption(index, element) {
             state.selectedAnswerIndex = index;
             const container = document.getElementById('quiz-options-container');
@@ -435,7 +417,6 @@
             }
         }
 
-        // Submit Answer & Handle Adaptive Progression
         function submitAnswer() {
             if (state.selectedAnswerIndex === null) return;
 
@@ -449,7 +430,6 @@
                 isCorrect: isCorrect
             });
 
-            // Adaptive Progression Logic for next question selection
             if (state.currentQuestionIndex < 25) {
                 if (isCorrect) {
                     if (state.currentDifficulty === 'easy') state.currentDifficulty = 'medium';
@@ -459,7 +439,6 @@
                     else if (state.currentDifficulty === 'medium') state.currentDifficulty = 'easy';
                 }
 
-                // Sample next question from bank matching state.currentDifficulty
                 const pool = QUESTION_BANK[state.currentDifficulty];
                 const usedIds = state.questions.map(q => q.id);
                 const available = pool.filter(q => !usedIds.includes(q.id));
@@ -474,7 +453,6 @@
             }
         }
 
-        // Timer Countdown Logic
         function startTimer() {
             state.timerInterval = setInterval(() => {
                 state.secondsRemaining--;
@@ -490,7 +468,6 @@
             }, 1000);
         }
 
-        // Finish Assessment & Generate Report
         function finishAssessment() {
             clearInterval(state.timerInterval);
 
@@ -499,7 +476,6 @@
 
             document.getElementById('report-student-name').textContent = state.studentName;
 
-            // Calculate Metrics
             const total = state.answers.length;
             const correctCount = state.answers.filter(a => a.isCorrect).length;
             const scorePercent = Math.round((correctCount / total) * 100);
@@ -507,7 +483,6 @@
             document.getElementById('report-score-percent').textContent = `${scorePercent}%`;
             document.getElementById('report-score-fraction').textContent = `${correctCount} of ${total} Questions Correct`;
 
-            // Verdict Logic
             const badge = document.getElementById('verdict-status-badge');
             const desc = document.getElementById('verdict-description');
             const cardBorder = document.getElementById('card-verdict-border');
@@ -529,16 +504,13 @@
                 cardBorder.className = 'glass-card rounded-2xl p-8 shadow-xl space-y-6 border-t-8 border-t-rose-500';
             }
 
-            // Strand Performance Summary Breakdown
             renderStrandSummary();
 
-            // Log Webhook if configured
             if (state.webhookUrl) {
                 logToGoogleSheets(scorePercent, correctCount, total);
             }
         }
 
-        // Render Strand Breakdown Matrix
         function renderStrandSummary() {
             const strandMap = {};
 
@@ -570,7 +542,6 @@
             });
         }
 
-        // Optional Webhook Logger
         function logToGoogleSheets(scorePercent, correctCount, total) {
             const statusEl = document.getElementById('webhook-status');
             statusEl.classList.remove('hidden');
@@ -599,7 +570,6 @@
             });
         }
 
-        // Embedded SVG Generators
         function generateCoordinateSVG() {
             return `
                 <svg width="220" height="180" viewBox="0 0 220 180" class="mx-auto">
@@ -609,10 +579,8 @@
                         </pattern>
                     </defs>
                     <rect width="220" height="180" fill="url(#grid)" />
-                    <!-- Axes -->
                     <line x1="110" y1="10" x2="110" y2="170" stroke="#64748b" stroke-width="2" />
                     <line x1="10" y1="90" x2="210" y2="90" stroke="#64748b" stroke-width="2" />
-                    <!-- Point A -->
                     <circle cx="50" cy="40" r="5" fill="#005596" />
                     <text x="35" y="35" fill="#005596" font-weight="bold" font-size="12">Point A</text>
                 </svg>
