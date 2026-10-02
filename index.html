@@ -3,168 +3,121 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Grade 7–8 Mathematics Diagnostic Test</title>
+<title>Cambridge Mathematics Diagnostic</title>
 
 <style>
-* {
-    box-sizing: border-box;
+body{
+    font-family:Arial,sans-serif;
+    background:#f4f7fb;
+    margin:0;
+    padding:20px;
+    color:#222;
 }
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #eef3f8;
-    color: #222;
+.container{
+    max-width:900px;
+    margin:auto;
+    background:white;
+    padding:30px;
+    border-radius:18px;
+    box-shadow:0 4px 20px rgba(0,0,0,0.1);
 }
 
-.container {
-    max-width: 900px;
-    margin: 30px auto;
-    background: white;
-    padding: 30px;
-    border-radius: 18px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.10);
+h1{
+    text-align:center;
+    color:#243b64;
 }
 
-h1 {
-    text-align: center;
-    margin-bottom: 5px;
+.subtitle{
+    text-align:center;
+    color:#666;
+    margin-bottom:25px;
 }
 
-.subtitle {
-    text-align: center;
-    color: #666;
-    margin-bottom: 25px;
+input[type="text"]{
+    width:100%;
+    padding:13px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:16px;
+    box-sizing:border-box;
 }
 
-.name-box {
-    margin-bottom: 25px;
+button{
+    background:#243b64;
+    color:white;
+    border:none;
+    padding:13px 25px;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+    margin-top:15px;
 }
 
-.name-box label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 8px;
+button:hover{
+    opacity:0.9;
 }
 
-.name-box input {
-    width: 100%;
-    padding: 13px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 16px;
+.option{
+    display:block;
+    padding:14px;
+    margin:10px 0;
+    border:1px solid #ddd;
+    border-radius:10px;
+    cursor:pointer;
 }
 
-.progress {
-    margin-bottom: 20px;
-    font-weight: bold;
+.option:hover{
+    background:#f0f4fa;
 }
 
-.question {
-    background: #f7f9fc;
-    padding: 22px;
-    border-radius: 12px;
-    margin-bottom: 20px;
+.progress{
+    margin:20px 0;
+    font-weight:bold;
 }
 
-.question-number {
-    font-weight: bold;
-    margin-bottom: 10px;
+.question{
+    font-size:20px;
+    font-weight:bold;
+    margin:20px 0;
 }
 
-.question-text {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 15px;
+.result{
+    text-align:center;
 }
 
-.option {
-    display: block;
-    padding: 12px;
-    margin: 8px 0;
-    background: white;
-    border: 1px solid #d5dbe3;
-    border-radius: 8px;
-    cursor: pointer;
+.result-box{
+    background:#f0f5ff;
+    padding:20px;
+    border-radius:12px;
+    margin:15px 0;
 }
 
-.option:hover {
-    background: #edf3ff;
+.topic-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
 }
 
-.option input {
-    margin-right: 10px;
+.topic-table th,
+.topic-table td{
+    border:1px solid #ddd;
+    padding:10px;
+    text-align:center;
 }
 
-button {
-    border: none;
-    padding: 13px 25px;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-    margin: 5px;
+.topic-table th{
+    background:#243b64;
+    color:white;
 }
 
-#submitBtn {
-    background: #2563eb;
-    color: white;
+.hidden{
+    display:none;
 }
 
-#submitBtn:hover {
-    background: #1d4ed8;
-}
-
-#result {
-    display: none;
-    text-align: center;
-    margin-top: 30px;
-    padding: 30px;
-    background: #f0f7ff;
-    border-radius: 15px;
-}
-
-.score {
-    font-size: 32px;
-    font-weight: bold;
-    margin: 15px;
-}
-
-.level {
-    font-size: 24px;
-    font-weight: bold;
-    margin: 15px;
-}
-
-.analysis {
-    margin-top: 25px;
-}
-
-.analysis table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-}
-
-.analysis th,
-.analysis td {
-    border: 1px solid #ccc;
-    padding: 10px;
-}
-
-.analysis th {
-    background: #f0f2f5;
-}
-
-.hidden {
-    display: none;
-}
-
-.note {
-    font-size: 14px;
-    color: #666;
-    text-align: center;
-    margin-top: 20px;
+.small{
+    font-size:14px;
+    color:#666;
 }
 </style>
 </head>
@@ -173,547 +126,86 @@ button {
 
 <div class="container">
 
-<h1>Grade 7–8 Mathematics Diagnostic Test</h1>
+<div id="startScreen">
 
-<div class="subtitle">
-40 Multiple-Choice Questions
+<h1>Cambridge Mathematics Diagnostic</h1>
+
+<p class="subtitle">
+Mathematics Assessment
+</p>
+
+<p>
+This assessment adapts to your answers. Some questions may become easier or harder depending on your responses.
+</p>
+
+<label><b>Student Name</b></label>
+<br><br>
+
+<input type="text" id="studentName" placeholder="Enter your name">
+
+<br>
+
+<button onclick="startTest()">Start Assessment</button>
+
+<p class="small">
+Approximate time: 45 minutes
+</p>
+
 </div>
 
-<div class="name-box">
-<label for="studentName">Student Name</label>
-<input type="text" id="studentName" placeholder="Enter your full name">
-</div>
+
+<div id="testScreen" class="hidden">
 
 <div class="progress">
-40 questions • Select one answer for each question
+Question <span id="questionNumber"></span> of 20
 </div>
 
-<form id="quizForm">
+<div id="questionArea"></div>
 
-<!-- NUMBER & OPERATIONS -->
+<button onclick="submitAnswer()">Submit Answer</button>
 
-<div class="question">
-<div class="question-number">Question 1</div>
-<div class="question-text">What is −8 + 13?</div>
-
-<label class="option"><input type="radio" name="q1" value="A"> A. −21</label>
-<label class="option"><input type="radio" name="q1" value="B"> B. −5</label>
-<label class="option"><input type="radio" name="q1" value="C"> C. 5</label>
-<label class="option"><input type="radio" name="q1" value="D"> D. 21</label>
 </div>
 
 
-<div class="question">
-<div class="question-number">Question 2</div>
-<div class="question-text">What is 18 − 25?</div>
+<div id="resultScreen" class="hidden">
 
-<label class="option"><input type="radio" name="q2" value="A"> A. −7</label>
-<label class="option"><input type="radio" name="q2" value="B"> B. 7</label>
-<label class="option"><input type="radio" name="q2" value="C"> C. −43</label>
-<label class="option"><input type="radio" name="q2" value="D"> D. 43</label>
+<div class="result">
+
+<h1>Assessment Complete</h1>
+
+<div class="result-box">
+
+<h2 id="finalScore"></h2>
+
+<p id="finalPercentage"></p>
+
+<h2 id="placement"></h2>
+
+<p id="interpretation"></p>
+
 </div>
 
+<h2>Concept Performance</h2>
 
-<div class="question">
-<div class="question-number">Question 3</div>
-<div class="question-text">Which number is prime?</div>
+<table class="topic-table">
 
-<label class="option"><input type="radio" name="q3" value="A"> A. 21</label>
-<label class="option"><input type="radio" name="q3" value="B"> B. 27</label>
-<label class="option"><input type="radio" name="q3" value="C"> C. 31</label>
-<label class="option"><input type="radio" name="q3" value="D"> D. 39</label>
-</div>
-
-
-<div class="question">
-<div class="question-number">Question 4</div>
-<div class="question-text">What is the HCF of 18 and 24?</div>
-
-<label class="option"><input type="radio" name="q4" value="A"> A. 3</label>
-<label class="option"><input type="radio" name="q4" value="B"> B. 6</label>
-<label class="option"><input type="radio" name="q4" value="C"> C. 9</label>
-<label class="option"><input type="radio" name="q4" value="D"> D. 12</label>
-</div>
-
-
-<div class="question">
-<div class="question-number">Question 5</div>
-<div class="question-text">What is the LCM of 6 and 8?</div>
-
-<label class="option"><input type="radio" name="q5" value="A"> A. 12</label>
-<label class="option"><input type="radio" name="q5" value="B"> B. 14</label>
-<label class="option"><input type="radio" name="q5" value="C"> C. 24</label>
-<label class="option"><input type="radio" name="q5" value="D"> D. 48</label>
-</div>
-
-
-<div class="question">
-<div class="question-number">Question 6</div>
-<div class="question-text">Which fraction is equivalent to 3/4?</div>
-
-<label class="option"><input type="radio" name="q6" value="A"> A. 4/6</label>
-<label class="option"><input type="radio" name="q6" value="B"> B. 6/8</label>
-<label class="option"><input type="radio" name="q6" value="C"> C. 8/12</label>
-<label class="option"><input type="radio" name="q6" value="D"> D. 9/16</label>
-</div>
-
-
-<div class="question">
-<div class="question-number">Question 7</div>
-<div class="question-text">What is 0.75 written as a fraction in simplest form?</div>
-
-<label class="option"><input type="radio" name="q7" value="A"> A. 1/2</label>
-<label class="option"><input type="radio" name="q7" value="B"> B. 2/3</label>
-<label class="option"><input type="radio" name="q7" value="C"> C. 3/4</label>
-<label class="option"><input type="radio" name="q7" value="D"> D. 4/5</label>
-</div>
-
-
-<div class="question">
-<div class="question-number">Question 8</div>
-<div class="question-text">Calculate 2/3 × 3/4.</div>
-
-<label class="option"><input type="radio" name="q8" value="A"> A. 1/2</label>
-<label class="option"><input type="radio" name="q8" value="B"> B. 2/7</label>
-<label class="option"><input type="radio" name="q8" value="C"> C. 5/7</label>
-<label class="option"><input type="radio" name="q8" value="D"> D. 3/8</label>
-</div>
-
-
-<!-- ALGEBRA & PATTERNS -->
-
-<div class="question">
-<div class="question-number">Question 9</div>
-<div class="question-text">Simplify: 3x + 5x.</div>
-
-<label class="option"><input type="radio" name="q9" value="A"> A. 8</label>
-<label class="option"><input type="radio" name="q9" value="B"> B. 8x</label>
-<label class="option"><input type="radio" name="q9" value="C"> C. 15x</label>
-<label class="option"><input type="radio" name="q9" value="D"> D. 2x</label>
-</div>
-
-
-<div class="question">
-<div class="question-number">Question 10</div>
-<div class="question-text">Expand: 3(x + 4).</div>
-
-<label class="option"><input type="radio" name="q10" value="A"> A. 3x + 4</label>
-<label class="option"><input type="radio" name="q10" value="B"> B. x + 12</label>
-<label class="option"><input type="radio" name="q10" value="C"> C. 3x + 12</label>
-<label class="option"><input type="radio" name="q10" value="D"> D. 7x</label>
-</div>
-
-
-<div class="question">
-<div class="question-number">Question 11</div>
-<div class="question-text">Factorise: 6x + 12.</div>
-
-<label class="option"><input type="radio" name="q11" value="A"> A. 6(x + 2)</label>
-<label class="option"><input type="radio" name="q11" value="B"> B. 6(x + 12)</label>
-<label class="option"><input type="radio" name="q11" value="C"> C. 12(x + 6)</label>
-<label class="option"><input type="radio" name="q11" value="D"> D. 2(3x + 12)</label>
-</div>
-
-
-<div class="question">
-<div class="question-number">Question 12</div>
-<div class="question-text">Solve: x + 7 = 15.</div>
-
-<label class="option"><input type="radio" name="q12" value="A"> A. 7</label>
-<label class="option"><input type="radio" name="q12" value="B"> B. 8</label>
-<label class="option"><input type="radio" name="q12" value="C"> C. 9</label>
-<label class="option"><input type="radio" name="q12" value="D"> D. 22</label>
-</div>
-
-
-<div class="question">
-<div class="question-number">Question 13</div>
-<div class="question-text">Solve: 2x = 18.</div>
-
-<label class="option"><input type="radio" name="q13" value="A"> A. 6</label>
-<label class="option"><input type="radio" name="q13" value="B"> B. 8</label>
-<label class="option"><input type="radio" name="q13" value="C"> C. 9</label>
-<label class="option"><input type="radio" name="q13" value="D"> D. 36</label>
-</div>
-
-
-<div class="question">
-<div class="question-number">Question 14</div>
-<div class="question-text">Find the next number: 3, 7, 11, 15, ___</div>
-
-<label class="option"><input type="radio" name="q14" value="A"> A. 17</label>
-<label class="option"><input type="radio" name="q14" value="B"> B. 18</label>
-<label class="option"><input type="radio" name="q14" value="C"> C. 19</label>
-<label class="option"><input type="radio" name="q14" value="D"> D. 20</label>
-</div>
-
-
-<div class="question">
-<div class="question-number">Question 15</div>
-<div class="question-text">If y = 3x + 2, what is y when x = 4?</div>
-
-<label class="option"><input type="radio" name="q15" value="A"> A. 10</label>
-<label class="option"><input type="radio" name="q15" value="B"> B. 12</label>
-<label class="option"><input type="radio" name="q15" value="C"> C. 14</label>
-<label class="option"><input type="radio" name="q15" value="D"> D. 16</label>
-</div>
-
-
-<div class="question">
-<div class="question-number">Question 16</div>
-<div class="question-text">Which expression represents “5 more than twice x”?</div>
-
-<label class="option"><input type="radio" name="q16" value="A"> A. 5x + 2</label>
-<label class="option"><input type="radio" name="q16" value="B"> B. 2x + 5</label>
-<label class="option"><input type="radio" name="q16" value="C"> C. 5(x + 2)</label>
-<label class="option"><input type="radio" name="q16" value="D"> D. 2(x + 5)</label>
-</div>
-
-
-<!-- RATIO PROPORTION PERCENTAGE -->
-
-<div class="question">
-<div class="question-number">Question 17</div>
-<div class="question-text">Simplify the ratio 12 : 18.</div>
-
-<label class="option"><input type="radio" name="q17" value="A"> A. 2 : 3</label>
-<label class="option"><input type="radio" name="q17" value="B"> B. 3 : 2</label>
-<label class="option"><input type="radio" name="q17" value="C"> C. 4 : 5</label>
-<label class="option"><input type="radio" name="q17" value="D"> D. 6 : 9</label>
-</div>
-
-
-<div class="question">
-<div class="question-number">Question 18</div>
-<div class="question-text">If 3 notebooks cost ₹90, how much does 1 notebook cost?</div>
-
-<label class="option"><input type="radio" name="q18" value="A"> A. ₹20</label>
-<label class="option"><input type="radio" name="q18" value="B"> B. ₹25</label>
-<label class="option"><input type="radio" name="q18" value="C"> C. ₹30</label>
-<label class="option"><input type="radio" name="q18" value="D"> D. ₹35</label>
-</div>
-
-
-<div class="question">
-<div class="question-number">Question 19</div>
-<div class="question-text">What is 25% of 80?</div>
-
-<label class="option"><input type="radio" name="q19" value="A"> A. 15</label>
-<label class="option"><input type="radio" name="q19" value="B"> B. 20</label>
-<label class="option"><input type="radio" name="q19" value="C"> C. 25</label>
-<label class="option"><input type="radio" name="q19" value="D"> D. 30</label>
-</div>
-
-
-<div class="question">
-<div class="question-number">Question 20</div>
-<div class="question-text">A shirt costs ₹800. It is reduced by 10%. What is the discount?</div>
-
-<label class="option"><input type="radio" name="q20" value="A"> A. ₹40</label>
-<label class="option"><input type="radio" name="q20" value="B"> B. ₹60</label>
-<label class="option"><input type="radio" name="q20" value="C"> C. ₹80</label>
-<label class="option"><input type="radio" name="q20" value="D"> D. ₹100</label>
-</div>
-
-
-<div class="question">
-<div class="question-number">Question 21</div>
-<div class="question-text">If 5 : 8 = x : 24, what is x?</div>
-
-<label class="option"><input type="radio" name="q21" value="A"> A. 10</label>
-<label class="option"><input type="radio" name="q21" value="B"> B. 12</label>
-<label class="option"><input type="radio" name="q21" value="C"> C. 15</label>
-<label class="option"><input type="radio" name="q21" value="D"> D. 20</label>
-</div>
-
-
-<!-- GEOMETRY -->
-
-<div class="question">
-<div class="question-number">Question 22</div>
-<div class="question-text">Angles on a straight line add up to:</div>
-
-<label class="option"><input type="radio" name="q22" value="A"> A. 90°</label>
-<label class="option"><input type="radio" name="q22" value="B"> B. 180°</label>
-<label class="option"><input type="radio" name="q22" value="C"> C. 270°</label>
-<label class="option"><input type="radio" name="q22" value="D"> D. 360°</label>
-</div>
-
-
-<div class="question">
-<div class="question-number">Question 23</div>
-<div class="question-text">The angles in a triangle add up to:</div>
-
-<label class="option"><input type="radio" name="q23" value="A"> A. 90°</label>
-<label class="option"><input type="radio" name="q23" value="B"> B. 180°</label>
-<label class="option"><input type="radio" name="q23" value="C"> C. 270°</label>
-<label class="option"><input type="radio" name="q23" value="D"> D. 360°</label>
-</div>
-
-
-<div class="question">
-<div class="question-number">Question 24</div>
-<div class="question-text">A rectangle has length 8 cm and width 5 cm. What is its area?</div>
-
-<label class="option"><input type="radio" name="q24" value="A"> A. 13 cm²</label>
-<label class="option"><input type="radio" name="q24" value="B"> B. 26 cm²</label>
-<label class="option"><input type="radio" name="q24" value="C"> C. 40 cm²</label>
-<label class="option"><input type="radio" name="q24" value="D"> D. 80 cm²</label>
-</div>
-
-
-<div class="question">
-<div class="question-number">Question 25</div>
-<div class="question-text">What is the perimeter of a square with side 7 cm?</div>
-
-<label class="option"><input type="radio" name="q25" value="A"> A. 14 cm</label>
-<label class="option"><input type="radio" name="q25" value="B"> B. 21 cm</label>
-<label class="option"><input type="radio" name="q25" value="C"> C. 28 cm</label>
-<label class="option"><input type="radio" name="q25" value="D"> D. 49 cm</label>
-</div>
-
-
-<div class="question">
-<div class="question-number">Question 26</div>
-<div class="question-text">One angle in a right-angled triangle is 35°. What is the other acute angle?</div>
-
-<label class="option"><input type="radio" name="q26" value="A"> A. 45°</label>
-<label class="option"><input type="radio" name="q26" value="B"> B. 55°</label>
-<label class="option"><input type="radio" name="q26" value="C"> C. 65°</label>
-<label class="option"><input type="radio" name="q26" value="D"> D. 75°</label>
-</div>
-
-
-<div class="question">
-<div class="question-number">Question 27</div>
-<div class="question-text">A full turn is equal to:</div>
-
-<label class="option"><input type="radio" name="q27" value="A"> A. 90°</label>
-<label class="option"><input type="radio" name="q27" value="B"> B. 180°</label>
-<label class="option"><input type="radio" name="q27" value="C"> C. 270°</label>
-<label class="option"><input type="radio" name="q27" value="D"> D. 360°</label>
-</div>
-
-
-<div class="question">
-<div class="question-number">Question 28</div>
-<div class="question-text">Two parallel lines are crossed by a transversal. Corresponding angles are:</div>
-
-<label class="option"><input type="radio" name="q28" value="A"> A. Equal</label>
-<label class="option"><input type="radio" name="q28" value="B"> B. Always 90°</label>
-<label class="option"><input type="radio" name="q28" value="C"> C. Always 180°</label>
-<label class="option"><input type="radio" name="q28" value="D"> D. Different</label>
-</div>
-
-
-<!-- DATA & PROBABILITY -->
-
-<div class="question">
-<div class="question-number">Question 29</div>
-<div class="question-text">What is the mean of 4, 6, 8 and 10?</div>
-
-<label class="option"><input type="radio" name="q29" value="A"> A. 6</label>
-<label class="option"><input type="radio" name="q29" value="B"> B. 7</label>
-<label class="option"><input type="radio" name="q29" value="C"> C. 8</label>
-<label class="option"><input type="radio" name="q29" value="D"> D. 9</label>
-</div>
-
-
-<div class="question">
-<div class="question-number">Question 30</div>
-<div class="question-text">What is the median of 3, 7, 8, 10 and 15?</div>
-
-<label class="option"><input type="radio" name="q30" value="A"> A. 7</label>
-<label class="option"><input type="radio" name="q30" value="B"> B. 8</label>
-<label class="option"><input type="radio" name="q30" value="C"> C. 10</label>
-<label class="option"><input type="radio" name="q30" value="D"> D. 15</label>
-</div>
-
-
-<div class="question">
-<div class="question-number">Question 31</div>
-<div class="question-text">What is the probability of getting a head when a fair coin is tossed?</div>
-
-<label class="option"><input type="radio" name="q31" value="A"> A. 0</label>
-<label class="option"><input type="radio" name="q31" value="B"> B. 1/4</label>
-<label class="option"><input type="radio" name="q31" value="C"> C. 1/2</label>
-<label class="option"><input type="radio" name="q31" value="D"> D. 1</label>
-</div>
-
-
-<div class="question">
-<div class="question-number">Question 32</div>
-<div class="question-text">A bag contains 3 red balls and 2 blue balls. What is the probability of picking a blue ball?</div>
-
-<label class="option"><input type="radio" name="q32" value="A"> A. 2/3</label>
-<label class="option"><input type="radio" name="q32" value="B"> B. 2/5</label>
-<label class="option"><input type="radio" name="q32" value="C"> C. 3/5</label>
-<label class="option"><input type="radio" name="q32" value="D"> D. 1/2</label>
-</div>
-
-
-<!-- MATHEMATICAL REASONING -->
-
-<div class="question">
-<div class="question-number">Question 33</div>
-<div class="question-text">A number is multiplied by 3 and then 5 is added. The result is 20. What is the number?</div>
-
-<label class="option"><input type="radio" name="q33" value="A"> A. 3</label>
-<label class="option"><input type="radio" name="q33" value="B"> B. 5</label>
-<label class="option"><input type="radio" name="q33" value="C"> C. 7</label>
-<label class="option"><input type="radio" name="q33" value="D"> D. 15</label>
-</div>
-
-
-<div class="question">
-<div class="question-number">Question 34</div>
-<div class="question-text">A train travels 60 km in 1 hour. How far will it travel in 3 hours at the same speed?</div>
-
-<label class="option"><input type="radio" name="q34" value="A"> A. 120 km</label>
-<label class="option"><input type="radio" name="q34" value="B"> B. 150 km</label>
-<label class="option"><input type="radio" name="q34" value="C"> C. 180 km</label>
-<label class="option"><input type="radio" name="q34" value="D"> D. 240 km</label>
-</div>
-
-
-<div class="question">
-<div class="question-number">Question 35</div>
-<div class="question-text">A rectangle has an area of 48 cm² and a length of 8 cm. What is its width?</div>
-
-<label class="option"><input type="radio" name="q35" value="A"> A. 4 cm</label>
-<label class="option"><input type="radio" name="q35" value="B"> B. 5 cm</label>
-<label class="option"><input type="radio" name="q35" value="C"> C. 6 cm</label>
-<label class="option"><input type="radio" name="q35" value="D"> D. 8 cm</label>
-</div>
-
-
-<div class="question">
-<div class="question-number">Question 36</div>
-<div class="question-text">Which is greater?</div>
-
-<label class="option"><input type="radio" name="q36" value="A"> A. 0.45</label>
-<label class="option"><input type="radio" name="q36" value="B"> B. 0.405</label>
-<label class="option"><input type="radio" name="q36" value="C"> C. 0.054</label>
-<label class="option"><input type="radio" name="q36" value="D"> D. 0.045</label>
-</div>
-
-
-<div class="question">
-<div class="question-number">Question 37</div>
-<div class="question-text">If a = 4 and b = 3, what is a² + b?</div>
-
-<label class="option"><input type="radio" name="q37" value="A"> A. 11</label>
-<label class="option"><input type="radio" name="q37" value="B"> B. 16</label>
-<label class="option"><input type="radio" name="q37" value="C"> C. 19</label>
-<label class="option"><input type="radio" name="q37" value="D"> D. 25</label>
-</div>
-
-
-<div class="question">
-<div class="question-number">Question 38</div>
-<div class="question-text">A student scored 18 out of 20. What percentage did the student score?</div>
-
-<label class="option"><input type="radio" name="q38" value="A"> A. 80%</label>
-<label class="option"><input type="radio" name="q38" value="B"> B. 85%</label>
-<label class="option"><input type="radio" name="q38" value="C"> C. 90%</label>
-<label class="option"><input type="radio" name="q38" value="D"> D. 95%</label>
-</div>
-
-
-<div class="question">
-<div class="question-number">Question 39</div>
-<div class="question-text">Which expression has the same value as 2(x + 3)?</div>
-
-<label class="option"><input type="radio" name="q39" value="A"> A. 2x + 3</label>
-<label class="option"><input type="radio" name="q39" value="B"> B. 2x + 6</label>
-<label class="option"><input type="radio" name="q39" value="C"> C. x + 6</label>
-<label class="option"><input type="radio" name="q39" value="D"> D. 2x + 5</label>
-</div>
-
-
-<div class="question">
-<div class="question-number">Question 40</div>
-<div class="question-text">A number is decreased by 7 and the answer is 12. What was the original number?</div>
-
-<label class="option"><input type="radio" name="q40" value="A"> A. 5</label>
-<label class="option"><input type="radio" name="q40" value="B"> B. 12</label>
-<label class="option"><input type="radio" name="q40" value="C"> C. 19</label>
-<label class="option"><input type="radio" name="q40" value="D"> D. 21</label>
-</div>
-
-
-<button id="submitBtn" type="button" onclick="calculateResult()">
-Submit Test
-</button>
-
-</form>
-
-
-<div id="result">
-
-<h2>Test Result</h2>
-
-<div id="studentResult"></div>
-
-<div class="score" id="scoreResult"></div>
-
-<div class="level" id="levelResult"></div>
-
-<div class="analysis">
-
-<h3>Topic-wise Analysis</h3>
-
-<table>
+<thead>
 <tr>
-<th>Topic</th>
-<th>Score</th>
-<th>Total</th>
+<th>Concept</th>
+<th>Correct</th>
+<th>Attempted</th>
+<th>Performance</th>
 </tr>
+</thead>
 
-<tr>
-<td>Number & Operations</td>
-<td id="numberScore"></td>
-<td>8</td>
-</tr>
-
-<tr>
-<td>Algebra & Patterns</td>
-<td id="algebraScore"></td>
-<td>8</td>
-</tr>
-
-<tr>
-<td>Ratio, Proportion & Percentage</td>
-<td id="ratioScore"></td>
-<td>5</td>
-</tr>
-
-<tr>
-<td>Geometry & Measure</td>
-<td id="geometryScore"></td>
-<td>7</td>
-</tr>
-
-<tr>
-<td>Data & Probability</td>
-<td id="dataScore"></td>
-<td>4</td>
-</tr>
-
-<tr>
-<td>Mathematical Reasoning</td>
-<td id="reasoningScore"></td>
-<td>8</td>
-</tr>
+<tbody id="topicResults"></tbody>
 
 </table>
 
-</div>
+<p id="savingMessage"></p>
 
 </div>
 
-<div class="note">
-Please check your answers before submitting.
 </div>
 
 </div>
@@ -721,170 +213,867 @@ Please check your answers before submitting.
 
 <script>
 
-const answers = {
+/* =====================================================
+   GOOGLE SHEETS CONNECTION
+   ===================================================== */
 
-q1:"C",
-q2:"A",
-q3:"C",
-q4:"B",
-q5:"C",
-q6:"B",
-q7:"C",
-q8:"A",
-
-q9:"B",
-q10:"C",
-q11:"A",
-q12:"B",
-q13:"C",
-q14:"C",
-q15:"C",
-q16:"B",
-
-q17:"A",
-q18:"C",
-q19:"B",
-q20:"C",
-q21:"C",
-
-q22:"B",
-q23:"B",
-q24:"C",
-q25:"C",
-q26:"B",
-q27:"D",
-q28:"A",
-
-q29:"B",
-q30:"B",
-q31:"C",
-q32:"B",
-
-q33:"B",
-q34:"C",
-q35:"C",
-q36:"A",
-q37:"C",
-q38:"C",
-q39:"B",
-q40:"C"
-
-};
+const GOOGLE_SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbx7MAqukTjRKyzbzS4KiiiEbMCubFTYgOGZNmrTFFo8CD-CJtuLZv0qzJ9uGhDKQg/exec";
 
 
-function calculateResult() {
+/* =====================================================
+   TEST SETTINGS
+   ===================================================== */
 
-    const name =
+const MAX_QUESTIONS = 20;
+
+let studentName = "";
+let currentQuestion = null;
+let currentQuestionIndex = 0;
+let currentDifficulty = 2;
+
+let score = 0;
+
+let usedQuestions = [];
+
+let topicStats = {};
+
+
+/* =====================================================
+   QUESTION BANK
+   ===================================================== */
+
+const questions = [
+
+/* ---------------- NUMBER ---------------- */
+
+{
+topic:"Number",
+difficulty:1,
+question:"Calculate: −7 + 12 − 5",
+options:["−10","0","10","14"],
+answer:1
+},
+
+{
+topic:"Number",
+difficulty:1,
+question:"Calculate: 3/4 − 5/8",
+options:["1/8","1/4","3/8","5/8"],
+answer:0
+},
+
+{
+topic:"Number",
+difficulty:2,
+question:"Write 0.00072 in standard form.",
+options:[
+"7.2 × 10⁻⁴",
+"7.2 × 10⁻³",
+"72 × 10⁻⁵",
+"0.72 × 10⁻³"
+],
+answer:0
+},
+
+{
+topic:"Number",
+difficulty:2,
+question:"Simplify: 2³ × 2⁴",
+options:[
+"2⁷",
+"2¹²",
+"4⁷",
+"4¹²"
+],
+answer:0
+},
+
+{
+topic:"Number",
+difficulty:3,
+question:"Find the HCF of 84 and 126.",
+options:["14","21","42","84"],
+answer:2
+},
+
+{
+topic:"Number",
+difficulty:3,
+question:"Find the LCM of 6 and 8.",
+options:["12","18","24","48"],
+answer:2
+},
+
+{
+topic:"Number",
+difficulty:3,
+question:"Calculate: 3.6 ÷ 0.12",
+options:["3","30","300","0.3"],
+answer:1
+},
+
+{
+topic:"Number",
+difficulty:4,
+question:"Arrange in ascending order: −2.4, −2.04, −2.44, −2.14",
+options:[
+"−2.04, −2.14, −2.4, −2.44",
+"−2.44, −2.4, −2.14, −2.04",
+"−2.14, −2.44, −2.04, −2.4",
+"−2.4, −2.44, −2.14, −2.04"
+],
+answer:1
+},
+
+
+/* ---------------- RATIO & PERCENTAGE ---------------- */
+
+{
+topic:"Ratio & Percentage",
+difficulty:1,
+question:"There are 30 students. The ratio of boys to girls is 3:2. How many girls are there?",
+options:["10","12","15","18"],
+answer:1
+},
+
+{
+topic:"Ratio & Percentage",
+difficulty:2,
+question:"Divide 360 in the ratio 4:5. What is the larger share?",
+options:["120","160","180","200"],
+answer:3
+},
+
+{
+topic:"Ratio & Percentage",
+difficulty:2,
+question:"A price of $800 is increased by 15%. What is the new price?",
+options:["$815","$900","$920","$950"],
+answer:2
+},
+
+{
+topic:"Ratio & Percentage",
+difficulty:3,
+question:"A jacket costs $1020 after a 15% discount. What was its original price?",
+options:["$1150","$1200","$1250","$1300"],
+answer:1
+},
+
+{
+topic:"Ratio & Percentage",
+difficulty:4,
+question:"y is directly proportional to x. When x = 4, y = 18. Find y when x = 10.",
+options:["36","40","45","54"],
+answer:2
+},
+
+{
+topic:"Ratio & Percentage",
+difficulty:4,
+question:"A map has a scale of 1:50,000. Two places are 7 cm apart on the map. What is the actual distance?",
+options:["0.35 km","3.5 km","35 km","350 km"],
+answer:1
+},
+
+
+/* ---------------- ALGEBRA ---------------- */
+
+{
+topic:"Algebra",
+difficulty:1,
+question:"Simplify: 2x + x + 10",
+options:["3x + 10","2x + 10","3x + 3","x + 10"],
+answer:0
+},
+
+{
+topic:"Algebra",
+difficulty:2,
+question:"Expand: 4(2x − 3)",
+options:[
+"8x − 12",
+"8x − 3",
+"6x − 12",
+"8x + 12"
+],
+answer:0
+},
+
+{
+topic:"Algebra",
+difficulty:3,
+question:"Factorise: 12x + 18",
+options:[
+"3(4x + 6)",
+"6(2x + 3)",
+"2(6x + 9)",
+"12(x + 18)"
+],
+answer:1
+},
+
+{
+topic:"Algebra",
+difficulty:3,
+question:"Solve: 5x − 8 = 27",
+options:["5","6","7","8"],
+answer:2
+},
+
+{
+topic:"Algebra",
+difficulty:3,
+question:"Solve: 3(x + 4) = 27",
+options:["4","5","6","7"],
+answer:1
+},
+
+{
+topic:"Algebra",
+difficulty:4,
+question:"Solve: 4x + 5 = 2x + 17",
+options:["4","5","6","7"],
+answer:2
+},
+
+{
+topic:"Algebra",
+difficulty:4,
+question:"The nth term of a sequence is 4n + 1. Which term is 41?",
+options:["8th","9th","10th","11th"],
+answer:2
+},
+
+{
+topic:"Algebra",
+difficulty:5,
+question:"A rectangle has width x cm and length (x + 4) cm. Its perimeter is 44 cm. Find x.",
+options:["6","8","9","10"],
+answer:2
+},
+
+{
+topic:"Algebra",
+difficulty:5,
+question:"Make x the subject of y = 3x + 5.",
+options:[
+"x = 3y + 5",
+"x = (y + 5)/3",
+"x = (y − 5)/3",
+"x = y/3 − 5"
+],
+answer:2
+},
+
+
+/* ---------------- GEOMETRY ---------------- */
+
+{
+topic:"Geometry",
+difficulty:2,
+question:"Two angles on a straight line are 3x and 2x + 20°. Find x.",
+options:["20°","30°","32°","40°"],
+answer:2
+},
+
+{
+topic:"Geometry",
+difficulty:2,
+question:"The angles of a triangle are x, 2x and 3x. Find x.",
+options:["20°","30°","40°","60°"],
+answer:1
+},
+
+{
+topic:"Geometry",
+difficulty:3,
+question:"Two parallel lines are cut by a transversal. One corresponding angle is 68°. What is the matching corresponding angle?",
+options:["22°","68°","112°","180°"],
+answer:1
+},
+
+{
+topic:"Geometry",
+difficulty:3,
+question:"A right-angled triangle has a hypotenuse of 10 cm. Which statement is always true?",
+options:[
+"One leg must be 5 cm.",
+"The two shorter sides must add to 10 cm.",
+"The square of the hypotenuse equals the sum of the squares of the other two sides.",
+"The triangle must be isosceles."
+],
+answer:2
+},
+
+{
+topic:"Geometry",
+difficulty:4,
+question:"A shape is made from a 10 cm × 6 cm rectangle and a semicircle with diameter 5 cm. What is its exact area?",
+options:[
+"60 + 5π cm²",
+"60 + 25π/4 cm²",
+"60 + 25π/8 cm²",
+"60 + 10π cm²"
+],
+answer:2
+},
+
+{
+topic:"Geometry",
+difficulty:3,
+question:"A point (−2,5) is translated 4 units right and 3 units down. What are the new coordinates?",
+options:[
+"(2,2)",
+"(−6,8)",
+"(2,8)",
+"(−6,2)"
+],
+answer:0
+},
+
+
+/* ---------------- STATISTICS & PROBABILITY ---------------- */
+
+{
+topic:"Statistics & Probability",
+difficulty:2,
+question:"Find the mean of 6, 8, 10, 10, 11 and 15.",
+options:["9","10","11","12"],
+answer:1
+},
+
+{
+topic:"Statistics & Probability",
+difficulty:2,
+question:"Find the range of 6, 8, 10, 10, 11 and 15.",
+options:["6","8","9","10"],
+answer:2
+},
+
+{
+topic:"Statistics & Probability",
+difficulty:3,
+question:"The mean of five numbers is 12. Four numbers are 8, 11, 13 and 15. Find the fifth number.",
+options:["12","13","14","15"],
+answer:1
+},
+
+{
+topic:"Statistics & Probability",
+difficulty:3,
+question:"A bag contains 3 blue balls and 7 red balls. What is the probability of choosing a blue ball?",
+options:["3/7","3/10","7/10","1/3"],
+answer:1
+},
+
+{
+topic:"Statistics & Probability",
+difficulty:4,
+question:"A fair six-sided die is rolled. What is the probability of getting a number greater than 4?",
+options:["1/6","1/3","1/2","2/3"],
+answer:1
+},
+
+
+/* ---------------- MATHEMATICAL REASONING ---------------- */
+
+{
+topic:"Mathematical Reasoning",
+difficulty:3,
+question:"Solve: 3x − 7 = 29",
+options:["10","11","12","13"],
+answer:2
+},
+
+{
+topic:"Mathematical Reasoning",
+difficulty:4,
+question:"A ratio is 3:5. After 6 boys join, the ratio becomes 3:4. How many students were originally in the club?",
+options:["48","56","64","72"],
+answer:2
+},
+
+{
+topic:"Mathematical Reasoning",
+difficulty:4,
+question:"A rectangle has an area of 96 cm². Its length is 4 cm more than its width. Find its dimensions.",
+options:[
+"6 cm × 16 cm",
+"8 cm × 12 cm",
+"9 cm × 13 cm",
+"10 cm × 14 cm"
+],
+answer:1
+},
+
+{
+topic:"Mathematical Reasoning",
+difficulty:4,
+question:"A battery is at 80% charge. It loses 15% of its current charge. What percentage remains?",
+options:["65%","68%","72%","75%"],
+answer:1
+},
+
+{
+topic:"Mathematical Reasoning",
+difficulty:5,
+question:"Which statement is always true?",
+options:[
+"If two numbers are even, their sum is odd.",
+"The product of two odd numbers is even.",
+"The square of an integer is never negative.",
+"Every prime number is odd."
+],
+answer:2
+}
+
+];
+
+
+/* =====================================================
+   INITIALISE TOPICS
+   ===================================================== */
+
+function initialiseTopics(){
+
+    topicStats = {};
+
+    const topics = [
+        "Number",
+        "Ratio & Percentage",
+        "Algebra",
+        "Geometry",
+        "Statistics & Probability",
+        "Mathematical Reasoning"
+    ];
+
+    topics.forEach(topic => {
+
+        topicStats[topic] = {
+            attempted:0,
+            correct:0
+        };
+
+    });
+}
+
+
+/* =====================================================
+   START TEST
+   ===================================================== */
+
+function startTest(){
+
+    studentName =
         document.getElementById("studentName").value.trim();
 
-    if (name === "") {
-        alert("Please enter your name before submitting.");
+    if(studentName === ""){
+        alert("Please enter your name.");
         return;
     }
 
+    initialiseTopics();
 
-    let score = 0;
+    currentQuestionIndex = 0;
+    currentDifficulty = 2;
+    score = 0;
+    usedQuestions = [];
 
-    let topicScores = {
-        number: 0,
-        algebra: 0,
-        ratio: 0,
-        geometry: 0,
-        data: 0,
-        reasoning: 0
+    document.getElementById("startScreen")
+        .classList.add("hidden");
+
+    document.getElementById("testScreen")
+        .classList.remove("hidden");
+
+    showNextQuestion();
+}
+
+
+/* =====================================================
+   SELECT ADAPTIVE QUESTION
+   ===================================================== */
+
+function chooseQuestion(){
+
+    const available =
+        questions.filter(q =>
+            !usedQuestions.includes(q)
+        );
+
+    if(available.length === 0){
+        return null;
+    }
+
+    /*
+       Find topics with the fewest attempts.
+       This ensures that the assessment samples
+       different areas of mathematics.
+    */
+
+    let minimumAttempts =
+        Math.min(
+            ...available.map(q =>
+                topicStats[q.topic]
+                ? topicStats[q.topic].attempted
+                : 0
+            )
+        );
+
+    let topicCandidates =
+        available.filter(q =>
+            topicStats[q.topic].attempted ===
+            minimumAttempts
+        );
+
+    /*
+       Select the question closest to the
+       current adaptive difficulty.
+    */
+
+    topicCandidates.sort((a,b) => {
+
+        const differenceA =
+            Math.abs(a.difficulty - currentDifficulty);
+
+        const differenceB =
+            Math.abs(b.difficulty - currentDifficulty);
+
+        return differenceA - differenceB;
+
+    });
+
+    return topicCandidates[0];
+}
+
+
+/* =====================================================
+   SHOW QUESTION
+   ===================================================== */
+
+function showNextQuestion(){
+
+    if(currentQuestionIndex >= MAX_QUESTIONS){
+
+        finishTest();
+
+        return;
+    }
+
+    currentQuestion =
+        chooseQuestion();
+
+    if(!currentQuestion){
+
+        finishTest();
+
+        return;
+    }
+
+    usedQuestions.push(currentQuestion);
+
+    document.getElementById("questionNumber")
+        .textContent =
+        currentQuestionIndex + 1;
+
+    let html = "";
+
+    html +=
+        '<div class="question">' +
+        currentQuestion.question +
+        '</div>';
+
+    currentQuestion.options.forEach(
+        (option,index) => {
+
+            html += `
+            <label class="option">
+                <input
+                    type="radio"
+                    name="answer"
+                    value="${index}">
+                ${option}
+            </label>
+            `;
+
+        }
+    );
+
+    document.getElementById("questionArea")
+        .innerHTML = html;
+}
+
+
+/* =====================================================
+   SUBMIT ANSWER
+   ===================================================== */
+
+function submitAnswer(){
+
+    const selected =
+        document.querySelector(
+            'input[name="answer"]:checked'
+        );
+
+    if(!selected){
+
+        alert("Please select an answer.");
+
+        return;
+    }
+
+    const selectedAnswer =
+        Number(selected.value);
+
+    const correct =
+        selectedAnswer === currentQuestion.answer;
+
+    const topic =
+        currentQuestion.topic;
+
+    topicStats[topic].attempted++;
+
+    if(correct){
+
+        score++;
+
+        topicStats[topic].correct++;
+
+        /*
+           Increase difficulty after
+           a correct response.
+        */
+
+        currentDifficulty =
+            Math.min(
+                5,
+                currentDifficulty + 1
+            );
+
+    }else{
+
+        /*
+           Decrease difficulty after
+           an incorrect response.
+        */
+
+        currentDifficulty =
+            Math.max(
+                1,
+                currentDifficulty - 1
+            );
+    }
+
+    currentQuestionIndex++;
+
+    showNextQuestion();
+}
+
+
+/* =====================================================
+   FINISH TEST
+   ===================================================== */
+
+function finishTest(){
+
+    document.getElementById("testScreen")
+        .classList.add("hidden");
+
+    document.getElementById("resultScreen")
+        .classList.remove("hidden");
+
+    const percentage =
+        Math.round(
+            (score / MAX_QUESTIONS) * 100
+        );
+
+    let placement = "";
+    let interpretation = "";
+
+    if(score <= 7){
+
+        placement =
+            "Foundation / Grade 7 Support";
+
+        interpretation =
+            "The student would benefit from strengthening core Grade 7 mathematical skills before progressing further.";
+
+    }
+    else if(score <= 11){
+
+        placement =
+            "Developing / Grade 7";
+
+        interpretation =
+            "The student demonstrates developing Grade 7 understanding and would benefit from further consolidation.";
+
+    }
+    else if(score <= 15){
+
+        placement =
+            "Secure Grade 7 → Grade 8";
+
+        interpretation =
+            "The student demonstrates a reasonably secure Grade 7 foundation with emerging Grade 8 readiness.";
+
+    }
+    else if(score <= 17){
+
+        placement =
+            "Grade 8 Ready";
+
+        interpretation =
+            "The student demonstrates strong understanding across the assessed areas and appears ready for Grade 8 work.";
+
+    }
+    else{
+
+        placement =
+            "Strong Grade 8 / Extension";
+
+        interpretation =
+            "The student demonstrates strong performance on the assessed Grade 7–8 mathematics skills.";
+
+    }
+
+
+    document.getElementById("finalScore")
+        .textContent =
+        "Score: " +
+        score +
+        " / " +
+        MAX_QUESTIONS;
+
+    document.getElementById("finalPercentage")
+        .textContent =
+        "Percentage: " +
+        percentage +
+        "%";
+
+    document.getElementById("placement")
+        .textContent =
+        placement;
+
+    document.getElementById("interpretation")
+        .textContent =
+        interpretation;
+
+
+    displayTopicResults();
+
+    sendToGoogleSheets(
+        percentage,
+        placement
+    );
+}
+
+
+/* =====================================================
+   DISPLAY TOPIC RESULTS
+   ===================================================== */
+
+function displayTopicResults(){
+
+    const table =
+        document.getElementById("topicResults");
+
+    table.innerHTML = "";
+
+    Object.keys(topicStats).forEach(topic => {
+
+        const attempted =
+            topicStats[topic].attempted;
+
+        const correct =
+            topicStats[topic].correct;
+
+        let performance = "—";
+
+        if(attempted > 0){
+
+            performance =
+                Math.round(
+                    (correct / attempted) * 100
+                ) + "%";
+
+        }
+
+        table.innerHTML += `
+        <tr>
+            <td>${topic}</td>
+            <td>${correct}</td>
+            <td>${attempted}</td>
+            <td>${performance}</td>
+        </tr>
+        `;
+
+    });
+}
+
+
+/* =====================================================
+   SEND RESULTS TO GOOGLE SHEETS
+   ===================================================== */
+
+function sendToGoogleSheets(
+    percentage,
+    placement
+){
+
+    document.getElementById("savingMessage")
+        .textContent =
+        "Saving your result...";
+
+    const data = {
+
+        name:studentName,
+
+        score:score,
+
+        total:MAX_QUESTIONS,
+
+        percentage:percentage,
+
+        placement:placement,
+
+        topics:topicStats,
+
+        date:new Date().toLocaleString()
+
     };
 
 
-    for (let i = 1; i <= 40; i++) {
+    fetch(
+        GOOGLE_SCRIPT_URL,
+        {
+            method:"POST",
 
-        const selected =
-            document.querySelector(
-                'input[name="q' + i + '"]:checked'
-            );
+            mode:"no-cors",
 
-        if (selected && selected.value === answers["q" + i]) {
+            headers:{
+                "Content-Type":
+                "text/plain;charset=utf-8"
+            },
 
-            score++;
-
-            if (i <= 8)
-                topicScores.number++;
-
-            else if (i <= 16)
-                topicScores.algebra++;
-
-            else if (i <= 21)
-                topicScores.ratio++;
-
-            else if (i <= 28)
-                topicScores.geometry++;
-
-            else if (i <= 32)
-                topicScores.data++;
-
-            else
-                topicScores.reasoning++;
+            body:JSON.stringify(data)
         }
-    }
+    )
+    .then(() => {
 
+        document.getElementById("savingMessage")
+            .textContent =
+            "Your result has been submitted.";
 
-    const percentage =
-        Math.round((score / 40) * 100);
+    })
+    .catch(error => {
 
+        console.error(error);
 
-    let level = "";
+        document.getElementById("savingMessage")
+            .textContent =
+            "Your result is shown above.";
 
-    if (score <= 15) {
-        level = "Foundation";
-    }
-    else if (score <= 24) {
-        level = "Developing";
-    }
-    else if (score <= 32) {
-        level = "Secure";
-    }
-    else if (score <= 36) {
-        level = "Strong";
-    }
-    else {
-        level = "Extension";
-    }
-
-
-    document.getElementById("studentResult").innerHTML =
-        "<strong>Student:</strong> " + name;
-
-    document.getElementById("scoreResult").innerHTML =
-        score + " / 40<br>" +
-        percentage + "%";
-
-    document.getElementById("levelResult").innerHTML =
-        "Placement Level: " + level;
-
-
-    document.getElementById("numberScore").innerHTML =
-        topicScores.number;
-
-    document.getElementById("algebraScore").innerHTML =
-        topicScores.algebra;
-
-    document.getElementById("ratioScore").innerHTML =
-        topicScores.ratio;
-
-    document.getElementById("geometryScore").innerHTML =
-        topicScores.geometry;
-
-    document.getElementById("dataScore").innerHTML =
-        topicScores.data;
-
-    document.getElementById("reasoningScore").innerHTML =
-        topicScores.reasoning;
-
-
-    document.getElementById("result").style.display = "block";
-
-    window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: "smooth"
     });
 
 }
